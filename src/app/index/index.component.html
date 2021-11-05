@@ -1,0 +1,42 @@
+<p>Lista de Eventos</p>
+
+<div action="" class="form-inline">
+  <div class="form-group mb-2">
+    <input type="text" class="form-control mr-2" placeholder="Buscar"
+    [(ngModel)]="filtroLista">
+
+  </div>
+</div>
+
+<table class="table table-striped">
+  <thead class="thead-dark">
+    <tr>
+      <th>#</th>
+      <th>Nome</th>
+      <th>Descricao</th>
+      <th>Valor</th>
+
+    </tr>
+  </thead>
+  <tbody *ngIf="produtos && produtos.length">
+    <tr *ngFor="let produto of produtosFiltrados">
+      <td>{{produto.ProdutoId}}</td>
+      <td>{{produto.nome}}</td>
+      <td>{{produto.descricao}}</td>
+      <td>{{produto.valor}}</td>
+      <td>
+        <button class="btn btn-danger">Edit</button>
+        <button class="btn btn-primary">Salvar</button>
+      </td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr *ngIf="!produtos.length">
+      <td colspan="8">
+        <h4>Nenhum evento marcado</h4>
+      </td>
+    </tr>
+  </tfoot>
+</table>
+
+{{produtos | json}}
